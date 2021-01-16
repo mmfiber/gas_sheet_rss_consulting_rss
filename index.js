@@ -1,6 +1,6 @@
 // consts
-var ssRss = SpreadsheetApp.openById("sheet id for rss");
-var ssStudent = SpreadsheetApp.openById("sheet id for student");
+var ssRss = SpreadsheetApp.openById("1QKseth8OpKSa1LVQd8exnVtyhvIBlmniRrYHVobnT2A");
+var ssStudent = SpreadsheetApp.openById("1QeI-bP3k9UBxIlGiP0QtxZoHZiOIMIC9U1MRHFm6mUs");
 
 const INDUSTRIES = [
   "GD",
@@ -89,9 +89,10 @@ function onEditRss(e) {
   const initRowIdxStudent = (sectionNum - 1) * LABELS_INPUT_ROW_STUDENT.length + LABELS_TT_ROW.length + OFFSET_ROW + 1;
   if(isAllValuesSet(sheetRss, initRowIdxRss, colIdx)){
     const outputRowIdx = initRowIdxStudent + LABELS_INPUT_ROW_STUDENT.length - 1// for "担当RSSの詳しい業界"
+    const value = sheetRss.getRange(initRowIdxRss + LABELS_INPUT_ROW_RSS.length - 1, colIdx).getValues();
     sheetStudent.getRange(initRowIdxStudent, colIdx, 2, 1).setBackground(LABEL_COLOR_BASE);
     sheetStudent.getRange(initRowIdxStudent+2, colIdx, 2, 1).setBackground(COLOR_AVAILABLE);
-    sheetStudent.getRange(outputRowIdx, colIdx).setValues(range.getValues());
+    sheetStudent.getRange(outputRowIdx, colIdx).setValues(value);
   } else {
     sheetStudent.getRange(initRowIdxStudent, colIdx, LABELS_INPUT_ROW_STUDENT.length, 1).setBackground(COLOR_UNAVAILABLE)
   }
