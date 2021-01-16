@@ -1,6 +1,6 @@
 // consts
-var ssRss = SpreadsheetApp.openById("1QKseth8OpKSa1LVQd8exnVtyhvIBlmniRrYHVobnT2A");
-var ssStudent = SpreadsheetApp.openById("1QeI-bP3k9UBxIlGiP0QtxZoHZiOIMIC9U1MRHFm6mUs");
+var ssRss = SpreadsheetApp.openById("sheet id for rss");
+var ssStudent = SpreadsheetApp.openById("sheet id for student");
 
 const INDUSTRIES = [
   "GD",
