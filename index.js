@@ -93,7 +93,7 @@ function onEditRss(e) {
     sheetStudent.getRange(initRowIdxStudent+2, colIdx, 2, 1).setBackground(COLOR_AVAILABLE);
     sheetStudent.getRange(outputRowIdx, colIdx).setValues(range.getValues());
   } else {
-    sheetStudent.getRange(initRowIdxStudent, colIdx, LABELS_INPUT_ROW_STUDENT.length, 1).setValue("").setBackground(COLOR_UNAVAILABLE)
+    sheetStudent.getRange(initRowIdxStudent, colIdx, LABELS_INPUT_ROW_STUDENT.length, 1).setBackground(COLOR_UNAVAILABLE)
   }
 }
 
