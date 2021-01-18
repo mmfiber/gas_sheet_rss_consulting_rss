@@ -1,0 +1,26 @@
+{
+  "name": "gas_sheet_rss_consulting_rss",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "prettier index.js --write",
+    "lint": "eslint --fix ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mmfiber/gas_sheet_rss_consulting_rss.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mmfiber/gas_sheet_rss_consulting_rss/issues"
+  },
+  "homepage": "https://github.com/mmfiber/gas_sheet_rss_consulting_rss#readme",
+  "devDependencies": {
+    "eslint": "^7.18.0",
+    "eslint-config-prettier": "^7.1.0",
+    "eslint-plugin-prettier": "^3.3.1",
+    "prettier": "^2.2.1"
+  }
+}
