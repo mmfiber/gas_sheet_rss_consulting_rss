@@ -35,7 +35,7 @@ const CONSULTING_CONTENT = ['面接対策', '相談', 'ES添削'];
 const LABEL_COLOR_BASE = '#d9ead3';
 const LABEL_COLOR_SESSION = '#93c47d';
 const COLOR_AVAILABLE = '#ffffff';
-const COLOR_UNAVAILABLE = '#000000';
+const COLOR_UNAVAILABLE = '#666666';
 const CHECK_RANGE = {
   from: {
     rowIdx: 5,
@@ -102,14 +102,17 @@ function onEditRss(e) {
       .getValues();
     sheetStudent
       .getRange(initRowIdxStudent, colIdx, 2, 1)
+      .setFontColor('black')
       .setBackground(LABEL_COLOR_BASE);
     sheetStudent
       .getRange(initRowIdxStudent + 2, colIdx, 2, 1)
+      .setFontColor('black')
       .setBackground(COLOR_AVAILABLE);
     sheetStudent.getRange(outputRowIdx, colIdx).setValues(value);
   } else {
     sheetStudent
       .getRange(initRowIdxStudent, colIdx, LABELS_INPUT_ROW_STUDENT.length, 1)
+      .setFontColor(COLOR_UNAVAILABLE)
       .setBackground(COLOR_UNAVAILABLE);
   }
 }
