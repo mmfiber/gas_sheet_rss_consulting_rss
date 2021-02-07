@@ -132,8 +132,9 @@ function _onEditRss(e, rowIdx, colIdx) {
   const rowIdxStudentIdRss = rowIdxStartFromRss + 1;
 
   if (rowIdx === rowIdxStudentIdRss && !validateStudentId(value)) {
+    const ui = SpreadsheetApp.getUi();
     const msg = studentIdHelpMsg(value);
-    Browser.msgBox(msg, Browser.Buttons.Yes);
+    ui.alert('学籍番号が不適切です', msg, ui.ButtonSet.OK);
     sheetRss.getRange(rowIdx, colIdx).setValue('');
     return;
   }
@@ -237,8 +238,9 @@ function _onEditStudent(e, rowIdx, colIdx) {
   const rowIdxLastData = sheetData.getLastRow();
 
   if (rowIdx === rowIdxStudentId && !validateStudentId(value)) {
+    const ui = SpreadsheetApp.getUi();
     const msg = studentIdHelpMsg(value);
-    Browser.msgBox(msg, Browser.Buttons.Yes);
+    ui.alert('学籍番号が不適切です', msg, ui.ButtonSet.OK);
     sheetStudent.getRange(rowIdx, colIdx).setValue('');
     return;
   }
@@ -351,9 +353,10 @@ function validateStudentId(value) {
 
 function studentIdHelpMsg(value) {
   return `
-    ${value}は正しい学籍番号ではありません。\\n
-    以下をご確認いただき再度入力をお願いします。\\n\\n
-    ・学籍番号が半角英数字7桁になっている\\n
+    ${value}は正しい学籍番号ではありません。
+    以下をご確認いただき再度入力をお願いします。
+
+    ・学籍番号が半角英数字7桁になっている
     ・院生の方は'm'が小文字になっている
   `;
 }
