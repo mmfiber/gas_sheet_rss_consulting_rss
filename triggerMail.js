@@ -94,9 +94,9 @@ function getBodyMsgRss(
   return `
     ${rssName} さん
 
-    こんにちは！ 
+    こんにちは！
     日頃から就活生の使命の進路決着のために尽力いただきありがとうございます！ 
-      
+
     就活相談会の詳細を連絡させて頂きます。 
     ------------------------------------------------------------------- 
     ・日時：${date.getMonth() + 1}月${date.getDate()}日 ${TIMETABLE[period - 1]}
@@ -105,20 +105,22 @@ function getBodyMsgRss(
 
     ・担当学生：${studentName}
     ・相談内容：${content}
-    
+
     ※5 分前集合を心がけてください 
     ・開催形態：ZOOM 
     ・URL：${ZOOM_URL}
     ------------------------------------------------------------------- 
 
-    注意点 
+    注意点
     ・予約されていなくても必ず予定を開けといてください。直前まで予約が可能です。
     ・遅刻、欠席は厳禁となっています。万が一、当日遅刻・やむを得ない事情で欠席する場合は、ホストまでメールにて連絡してください。
     ・業務内容を下記URLから確認してください。
     ${CONSULTING_FESTA_DETAIL}
 
     最後まで後輩のために、一緒に頑張りましょう！ 当日お会いできる事を楽しみにしています。
-  `.replace('\t', '');
+  `
+    .replace(/^\n/, '')
+    .replace(/^ {4}/gm, '');
 }
 
 function getBodyMsgStudent(
@@ -133,9 +135,9 @@ function getBodyMsgStudent(
   return `
     ${studentName} さん
 
-    こんにちは！ 
+    こんにちは！
     就活相談会へ参加いただきありがとうございます！ 
-      
+
     就活相談会の詳細を連絡させて頂きます。 
     ------------------------------------------------------------------- 
     ・日時：${date.getMonth() + 1}月${date.getDate()}日 ${TIMETABLE[period - 1]}
@@ -143,16 +145,38 @@ function getBodyMsgStudent(
     ・セッション番号: ${session}
     ・担当RSS：${rssName}
     ・服装：自由
-    
+
     ※5 分前集合を心がけてください 
     ・開催形態：ZOOM 
     ・URL：${ZOOM_URL}
     ------------------------------------------------------------------- 
-    アドバイス 
+
+    アドバイス
     ・RSS に聞きたい就職活動への疑問や不安は、事前にまとめておいて下さい。 
-    注意点 
+    注意点
     ・遅刻、欠席の際はrss17hr@gmail.comまでメールにて連絡お願いします。
 
     進路実現に向かって、一緒に頑張りましょう！ 当日お会いできる事を楽しみにしています。
-  `.replace('\t', '');
+  `
+    .replace(/^\n/, '')
+    .replace(/^ {4}/gm, '');
+}
+
+function testMail() {
+  // send(
+  //   'e19m5207@soka-u.jp',
+  //   'test',
+  //   getBodyMsgRss(
+  //     "RSS",
+  //     "STUDENT",
+  //     new Date(),
+  //     "1",
+  //     "1",
+  //     "test",
+  //     "test"
+  //   )
+  // );
+  console.log(
+    getBodyMsgRss('RSS', 'STUDENT', new Date(), '1', '1', 'test', 'test')
+  );
 }
