@@ -7,14 +7,6 @@
     "test": "prettier index.js --write",
     "lint": "eslint --fix ."
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "*.js": "eslint --fix"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mmfiber/gas_sheet_rss_consulting_rss.git"
