@@ -2,6 +2,8 @@ function onEditRss(e) {
   const debug = { range: e.range.getA1Notation(), value: e.value };
   logger('onEditRss()', debug);
 
+  if (e.source.getActiveSheet().getSheetName() === 'GD') return;
+
   const range = e.range;
   const rowIdx = range.getRow();
   const colIdx = range.getColumn();
@@ -73,6 +75,8 @@ function _onEditRss(e, rowIdx, colIdx) {
 function onEditStudent(e) {
   const debug = { range: e.range.getA1Notation(), value: e.value };
   logger('onEditStudent()', debug);
+
+  if (e.source.getActiveSheet().getSheetName() === 'GD') return;
 
   const range = e.range;
   const rowIdx = range.getRow();
@@ -184,7 +188,9 @@ function studentIdHelpMsg(value) {
 
     ・学籍番号が半角英数字7桁になっている
     ・院生の方は'm'が小文字になっている
-  `;
+  `
+    .replace(/^\n/, '')
+    .replace(/^ {4}/gm, '');
 }
 
 function updateReservationStatus(

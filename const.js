@@ -1,13 +1,16 @@
+function setProperty() {
+  const prop = PropertiesService.getScriptProperties();
+  // prop.setProperty("", "");
+  console.log(prop.getKeys());
+}
+
+function getProperty(key) {
+  return PropertiesService.getScriptProperties().getProperty(key);
+}
 // consts
-var ssRss = SpreadsheetApp.openById(
-  '1QKseth8OpKSa1LVQd8exnVtyhvIBlmniRrYHVobnT2A'
-);
-var ssStudent = SpreadsheetApp.openById(
-  '1QeI-bP3k9UBxIlGiP0QtxZoHZiOIMIC9U1MRHFm6mUs'
-);
-var ssData = SpreadsheetApp.openById(
-  '1mdmWpw8nl5ukPzX24U4o9DXu0oEpqb7Bxg32cB5PSrc'
-);
+var ssRss = SpreadsheetApp.openById(getProperty('SPREADSHEET_ID_RSS'));
+var ssStudent = SpreadsheetApp.openById(getProperty('SPREADSHEET_ID_STUDENT'));
+var ssData = SpreadsheetApp.openById(getProperty('SPREADSHEET_ID_DATA'));
 
 const INDUSTRIES = [
   'メーカー',

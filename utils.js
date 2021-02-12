@@ -57,3 +57,46 @@ function validateStudentId(value) {
   const str = value.toString();
   return !str || str.match(/^\d{2}(m|\d)\d{4}$/);
 }
+
+function fetchDataByDate(date) {
+  const dateStr = dateToStr(date);
+  let matchedData = {};
+  INDUSTRIES.forEach((industry) => {
+    matchedData[industry] = [];
+    const sheetData = ssData.getSheetByName(industry);
+    const lastRowIdx = sheetData.getLastRow() - 1;
+    if (lastRowIdx === 0) return;
+
+    const ids = sheetData.getRange(2, 1, lastRowIdx, 1).getValues();
+    const matchedIds = ids.filter((id) => id[0].slice(0, 8) === dateStr);
+    matchedIds.forEach((id) => {
+      const rowIdxData = getRowIdxData(sheetData, id[0]);
+
+      const studentId = sheetData.getRange(rowIdxData, 2).getValue().toString();
+      const rssId = sheetData.getRange(rowIdxData, 4).getValue().toString();
+      const studentName = sheetData.getRange(rowIdxData, 3).getValue();
+      const rssName = sheetData.getRange(rowIdxData, 5).getValue();
+      const date = sheetData.getRange(rowIdxData, 6).getValue();
+      const period = sheetData.getRange(rowIdxData, 7).getValue();
+      const session = sheetData.getRange(rowIdxData, 8).getValue();
+      const content = sheetData.getRange(rowIdxData, 11).getValue();
+      const rssEmail = getEmail(rssId);
+      const studentEmail = getEmail(studentId);
+
+      matchedData[industry].push({
+        studentId,
+        rssId,
+        studentName,
+        rssName,
+        studentEmail,
+        rssEmail,
+        date,
+        period,
+        session,
+        content,
+        industry,
+      });
+    });
+  });
+  return matchedData;
+}

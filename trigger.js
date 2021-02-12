@@ -4,6 +4,7 @@ function setTriggers() {
   setOnEditRSS();
   setOnEditStudent();
   setSendRemidMail();
+  setCreateMemberList();
 }
 
 function setOnEditRSS() {
@@ -21,6 +22,14 @@ function setSendRemidMail() {
   ScriptApp.newTrigger('sendRemidMail')
     .timeBased()
     .atHour(18)
+    .everyDays(1)
+    .create();
+}
+
+function setCreateMemberList() {
+  ScriptApp.newTrigger('createMemberList')
+    .timeBased()
+    .atHour(7)
     .everyDays(1)
     .create();
 }
